@@ -19,6 +19,7 @@ void registrarPro(Producto [], int &);
 void listarPro(Producto [], int);
 int buscar(Producto [], char [], int);
 void buscarPro(Producto [], int);
+void actualizarPro(Producto [], int);
 
 int main(){
 	int op, np=-1, nv=-1;
@@ -63,6 +64,15 @@ int main(){
 					buscarPro(listproductos, np);
 				}else{
 					cout<<"\nNo hay productos para buscar...\n";
+				}
+				system("pause");
+				break;
+			case 4:
+				system("cls");
+				if(np>-1){
+					actualizarPro(listproductos, np);
+				}else{
+					cout<<"\nNo hay productos para actualizar...\n";
 				}
 				system("pause");
 				break;
@@ -122,4 +132,25 @@ void buscarPro(Producto listproductos[], int np){
 		cout<<listproductos[i].precio<<endl;
 	}
 	
+}
+void actualizarPro(Producto listproductos[], int np){
+	listarPro(listproductos, np);
+	char actPro[30], aux[30];
+	int i;
+	cout<<"\n\t===ACTUALIZAR PRODUCTO===\n";
+	cout<<"Ingrese el nombre del producto a actualizar: ";
+	cin.ignore();
+	cin.getline(actPro, 30);
+	i=buscar(listproductos, actPro, np);
+	if(i!=-1){
+		cout<<"\nIngrese el nuevo nombre: ";
+		cin.ignore();
+		cin.getline(aux, 30);
+		strcpy(listproductos[i].nombre,aux);
+		cout<<"\nIngrese el nuevo precio: ";
+		cin>>listproductos[i].precio;
+		cout<<"\n\nSe actualizo el producto correctamente..."<<endl;
+	}else{
+		cout<<"\nEl producto a actualizar no existe..."<<endl;
+	}
 }
