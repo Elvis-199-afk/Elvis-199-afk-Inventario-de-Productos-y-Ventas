@@ -17,7 +17,8 @@ struct Venta{
 
 void registrarPro(Producto [], int &);
 void listarPro(Producto [], int);
-
+int buscar(Producto [], char [], int);
+void buscarPro(Producto [], int);
 
 int main(){
 	int op, np=-1, nv=-1;
@@ -56,6 +57,15 @@ int main(){
 				}
 				system("pause");
 				break;
+			case 3:	
+				system("cls");
+				if(np>-1){
+					buscarPro(listproductos, np);
+				}else{
+					cout<<"\nNo hay productos para buscar...\n";
+				}
+				system("pause");
+				break;
 			case 9:
 				cout<<"\n\n\t\tS A L I E N D O  . . . \n";
 				break;
@@ -85,4 +95,31 @@ void listarPro(Producto listproductos[], int np){
 		cout<<setw(20)<<listproductos[i].precio<<endl;
 	}
 }
+int buscar(Producto listproductos[], char nomPro[], int np){
+	int i=0;
+	while((strcmp(nomPro, listproductos[i].nombre)!=0)&&(i<=np)){
+		i++;
+	}
+	if(i>np){
+		return -1;
+	}else{
+		return i;
+	}
+}
 
+void buscarPro(Producto listproductos[], int np){
+	char nomPro[30];
+	int i;
+	cout<<"\t===BUSCAR PRODUCTO===";
+	cout<<"\nIngrese el nombre que desea bucar: ";
+	cin.ignore();
+	cin.getline(nomPro, 30);
+	i=buscar(listproductos, nomPro, np);
+	if(i==-1){
+		cout<<"\nEl nombre del producto no se encuentra en la lista...";
+	}else{
+		cout<<"\n"<<listproductos[i].nombre<<endl;
+		cout<<listproductos[i].precio<<endl;
+	}
+	
+}
