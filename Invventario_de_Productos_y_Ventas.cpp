@@ -185,7 +185,7 @@ void actualizarPro(Producto listproductos[], int np){
 	i=buscar(listproductos, actPro, np);
 	if(i!=-1){
 		cout<<"\nIngrese el nuevo nombre: ";
-		cin.ignore();
+		
 		cin.getline(aux, 30);
 		strcpy(listproductos[i].nombre,aux);
 		cout<<"\nIngrese el nuevo precio: ";
