@@ -16,7 +16,7 @@ struct Venta{
 };
 
 void registrarPro(Producto [], int &);
-
+void listarPro(Producto [], int);
 
 
 int main(){
@@ -47,6 +47,15 @@ int main(){
 				}	
 				system("pause");		
 				break;	
+			case 2:
+				system("cls");
+				if (np>-1){
+					listarPro(listproductos, np);
+				}else{
+					cout<<"\nNo hay productos para listar...\n";
+				}
+				system("pause");
+				break;
 			case 9:
 				cout<<"\n\n\t\tS A L I E N D O  . . . \n";
 				break;
@@ -67,5 +76,13 @@ void registrarPro(Producto listproductos[], int &np){
 	cout<<"Ingrese el precio: ";
 	cin>>listproductos[np].precio;
 	cout<<"\nSe registro el producto...\n";
+}
+void listarPro(Producto listproductos[], int np){
+	cout<<"\t\t===LISTA DE PRODUCTOS==="<<endl;
+	cout<<left<<setw(30)<<"NOMBRE"<<setw(20)<<"PRECIO"<<endl;
+	for(int i=0; i<=np; i++){
+		cout<<setw(30)<<listproductos[i].nombre;
+		cout<<setw(20)<<listproductos[i].precio<<endl;
+	}
 }
 
