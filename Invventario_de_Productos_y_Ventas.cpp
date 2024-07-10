@@ -20,6 +20,10 @@ void listarPro(Producto [], int);
 int buscar(Producto [], char [], int);
 void buscarPro(Producto [], int);
 void actualizarPro(Producto [], int);
+void eliminarPro(Producto [], int &);
+
+
+
 
 int main(){
 	int op, np=-1, nv=-1;
@@ -73,6 +77,15 @@ int main(){
 					actualizarPro(listproductos, np);
 				}else{
 					cout<<"\nNo hay productos para actualizar...\n";
+				}
+				system("pause");
+				break;
+			case 5:
+				system("cls");
+				if(np>-1){
+					eliminarPro(listproductos, np);
+				}else{
+					cout<<"\nNo hay productos para eliminar...\n";
 				}
 				system("pause");
 				break;
@@ -152,5 +165,22 @@ void actualizarPro(Producto listproductos[], int np){
 		cout<<"\n\nSe actualizo el producto correctamente..."<<endl;
 	}else{
 		cout<<"\nEl producto a actualizar no existe..."<<endl;
+	}
+}
+void eliminarPro(Producto listproductos[], int &np){
+	char elimPro[30];
+	int i;
+	cout<<"\nIngrese el nombre del producto que desea eliminar: ";
+	cin.ignore();
+	cin.getline(elimPro, 30);
+	i=buscar(listproductos, elimPro, np);
+	if(i!=-1){
+		for(int j=i; j<=np-1; j++){
+			listproductos[j]=listproductos[j+1];
+		}
+		np--;
+		cout<<"\nSe elimino el producto correctamente..."<<endl;
+	}else{
+		cout<<"\nEl producto a eliminar no existe..."<<endl;
 	}
 }
