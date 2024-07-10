@@ -24,8 +24,7 @@ void eliminarPro(Producto [], int &);
 
 void registrarVen(Venta [], int &);
 void listarVen(Venta [], int);
-
-
+void totalVen(Venta [], int);
 
 int main(){
 	int op, np=-1, nv=-1;
@@ -106,6 +105,15 @@ int main(){
 					listarVen(listventas, nv);
 				}else{
 					cout<<"\nNo hay ventas para listar...\n";
+				}
+				system("pause");
+				break;
+			case 8:
+				system("cls");
+				if(nv>-1){
+					totalVen(listventas, nv);
+				}else{
+					cout<<"\nNo existen ventas...\n";
 				}
 				system("pause");
 				break;
@@ -227,4 +235,12 @@ void listarVen(Venta listventas[], int nv){
 		cout<<setw(20)<<listventas[i].cantidad;
 		cout<<setw(20)<<listventas[i].precioTotal<<endl;
 	}
+}
+void totalVen(Venta listventas[], int nv){
+	float total=0;
+	cout<<"===\tTOTAL DE VENTA==="<<endl;
+	for(int i=0; i<=nv; i++){
+		total+=listventas[i].precioTotal;
+	}
+	cout<<"\nEl tota de venta es: S/. "<<total<<endl;
 }
