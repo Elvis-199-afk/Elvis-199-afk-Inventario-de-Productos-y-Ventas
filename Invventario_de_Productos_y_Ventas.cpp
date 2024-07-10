@@ -23,6 +23,7 @@ void actualizarPro(Producto [], int);
 void eliminarPro(Producto [], int &);
 
 void registrarVen(Venta [], int &);
+void listarVen(Venta [], int);
 
 
 
@@ -99,6 +100,15 @@ int main(){
 				}	
 				system("pause");		
 				break;	
+			case 7:
+				system("cls");
+				if (nv>-1){
+					listarVen(listventas, nv);
+				}else{
+					cout<<"\nNo hay ventas para listar...\n";
+				}
+				system("pause");
+				break;
 			case 9:
 				cout<<"\n\n\t\tS A L I E N D O  . . . \n";
 				break;
@@ -207,4 +217,14 @@ void registrarVen(Venta listventas[], int &nv){
 	cout<<"\nIngrese el precio total: ";
 	cin>>listventas[nv].precioTotal;
 	cout<<"\n\nSe registro la venta correctamente..."<<endl;
+}
+void listarVen(Venta listventas[], int nv){
+	cout<<"\t===LISTA DE VENTAS==="<<endl;
+	cout<<left<<setw(10)<<"\nID"<<setw(20)<<"PRODUCTO"<<setw(20)<<"CANTIDAD"<<setw(20)<<"PRECIO TOTAL"<<endl;
+	for(int i=0; i<=nv; i++){
+		cout<<setw(10)<<listventas[i].idVenta;
+		cout<<setw(20)<<listventas[i].producto;
+		cout<<setw(20)<<listventas[i].cantidad;
+		cout<<setw(20)<<listventas[i].precioTotal<<endl;
+	}
 }
