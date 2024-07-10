@@ -22,6 +22,7 @@ void buscarPro(Producto [], int);
 void actualizarPro(Producto [], int);
 void eliminarPro(Producto [], int &);
 
+void registrarVen(Venta [], int &);
 
 
 
@@ -89,6 +90,15 @@ int main(){
 				}
 				system("pause");
 				break;
+			case  6:
+				system("cls");
+				if(nv<=30){
+					registrarVen(listventas, nv);
+				}else{
+					cout<<"No se puede registrar mas ventas, el arreglo esta lleno...\n";
+				}	
+				system("pause");		
+				break;	
 			case 9:
 				cout<<"\n\n\t\tS A L I E N D O  . . . \n";
 				break;
@@ -183,4 +193,18 @@ void eliminarPro(Producto listproductos[], int &np){
 	}else{
 		cout<<"\nEl producto a eliminar no existe..."<<endl;
 	}
+}
+void registrarVen(Venta listventas[], int &nv){
+	nv++;
+	cout<<"\n\t===REGISTRAR VENTAS==="<<endl;
+	cout<<"Ingrese el ID de la venta: ";
+	cin>>listventas[nv].idVenta;
+	cout<<"\nIngrese el nombre del producto: ";
+	cin.ignore();
+	cin.getline(listventas[nv].producto, 30);
+	cout<<"\nIngrese la cantidad: ";
+	cin>>listventas[nv].cantidad;
+	cout<<"\nIngrese el precio total: ";
+	cin>>listventas[nv].precioTotal;
+	cout<<"\n\nSe registro la venta correctamente..."<<endl;
 }
